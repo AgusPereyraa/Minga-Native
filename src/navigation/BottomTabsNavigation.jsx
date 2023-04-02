@@ -10,7 +10,7 @@ export default function BottomTabsNavigation(){
     return (
         <Tab.Navigator>
             <Tab.Screen name='Home' options={{ headerShown: false }} component={HomeScreen} />
-            <Tab.Screen name='Settings' options={{ headerShown: false }} component={SettingsScreen} />
+            <Tab.Screen name='Mangas' options={{ headerShown: false }} component={SettingsScreen} />
         </Tab.Navigator>
     )
 }
