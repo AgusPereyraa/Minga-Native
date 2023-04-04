@@ -98,12 +98,6 @@ export default function FormRegister() {
           <Text style={styles.parrafosFormText2}> Log In</Text>
         </TouchableOpacity>
         </View>
-        <Text style={styles.parrafosFormText}>
-          Go back to 
-          <Text style={styles.parrafosFormText2} onPress={() => {
-              navigation.navigate("Home");
-            }}> Home</Text> 
-        </Text>
       </View>
     </View>
   );
@@ -115,9 +109,9 @@ const styles = StyleSheet.create({
     justifyContent: "flex-start",
     alignItems: "center",
     gap: 15,
-    marginTop: 30,
+    marginTop: 40,
     width: "100%",
-    height: 480
+    height: 450
   },
   fieldset: {
     display: "flex",
@@ -227,6 +221,7 @@ const styles = StyleSheet.create({
     color: "#ff8c00",
     fontWeight: 'bold',
     fontSize: 18,
+    marginBottom: 5
   },
 
   textLogin:{

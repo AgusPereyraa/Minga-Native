@@ -5,12 +5,11 @@ const get_manga = createAsyncThunk(
     'get_manga',
     async({ inputId }) => {
         try {
-            let response = await axios.get(`https://minga-back-446z.onrender.com/mangas/${inputId}`)
+            let response = await axios.get(`https://back-minga.onrender.com/api/mangas/${inputId}`)
             return {
                 manga: response.data.mangas
             }
         } catch (error) {
-            console.log('No se ha podido traer el pedido')
             return {
                 manga: []
             }

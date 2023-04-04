@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         width: 100,
         height: 60,
-        backgroundColor: '#ff8c00',
+        backgroundColor: 'grey',
         borderRadius: 100,
     },
     btnNext: {
@@ -46,11 +46,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         width: 100,
         height: 60,
-        backgroundColor: '#ff8c00',
+        backgroundColor: 'grey',
         borderRadius: 100,
     },
     btnText:{
-        color: '#fff',
+        color: 'orange',
         fontWeight: 'bold',
         fontSize: 20
     }
