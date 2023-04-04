@@ -1,47 +1,72 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet, Alert, } from 'react-native';
 import axios from 'axios';
-import Google from "../../Images/Google.png"
+import { View, TextInput, Text, TouchableOpacity, StyleSheet, Image, Alert } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import Profile from "../../Images/profileForm.png"
 import Mail from "../../Images/Mail.png"
+import Camera from "../../Images/Camera.png"
 import Lock from "../../Images/Lock.png"
-import Register from '../Register/Register'
+import Google from "../../Images/Google.png"
+import SignIn from '../SignIn/SignIn'
 
-export default function LoginForm() {
-    const [mail, setMail] = useState('');         
-    const [password, setPassword] = useState('');
-    const [showRegister, setShowRegister] = useState(false)
+export default function FormRegister() {
+  const [name, setName] = useState('');     
+  const [mail, setMail] = useState('');     
+  const [photo, setPhoto] = useState('');
+  const [password, setPassword] = useState('');
+  const navigation= useNavigation()
+  const [showSignIn, setShowSignIn] = useState(false)
 
-    function handleSign(){
-      setShowRegister(true)
+  function handleSignIn(){
+    setShowSignIn(true)
+  }
+
+  async function handleSubmit() {
+    let data = {
+        name: name,
+        mail: mail,
+        photo: photo,
+        password: password
     }
-
-    async function handleSubmit() {
-        let data = {
-            mail: mail,
-            password: password
-        }
-        console.log(data)
-        let url = 'https://back-minga.onrender.com/api/auth/signin'
-        try {
-            await axios.post(url, data)
-            Alert.alert('¡Online User!', 'Welcome', [
-                { text: 'OK', onPress: () => console.log('OK Pressed') },
-            ]);
-        } catch (error) {
-            Alert.alert('Ooops, something went wrong!', 'Wrong Credentials', [
-                { text: 'OK', onPress: () => console.log('OK Pressed') },
-            ]);
-        }
+    console.log(data);
+    let url = 'https://back-minga.onrender.com/api/auth/signup'
+    try {
+        await axios.post(url, data)
+        Alert.alert('¡User Created!', 'Welcome', [
+            { text: 'OK', onPress: () => console.log('OK Pressed') },
+        ]);
+    } catch (error) {
+        Alert.alert('Ooops, something went wrong!', 'Wrong Credentials', [
+            { text: 'OK', onPress: () => console.log('OK Pressed') },
+        ]);
     }
+}
+  
 
   return (
-    showRegister?<Register /> : 
-    <View style={styles.containerLogIn}>
+    showSignIn?<SignIn /> : 
+    <View style={styles.ViewRegister}>
+      <View style={styles.fieldset}>
+        <Text style={styles.legend}>Name</Text>
+        <View style={styles.legendCont}>
+          <TextInput style={styles.input} value={name} onChangeText={(inputText => setName(inputText))} />
+          <Image style={styles.imagen} source={Profile} />
+        </View>
+      </View>
+
       <View style={styles.fieldset}>
         <Text style={styles.legend}>Email</Text>
         <View style={styles.legendCont}>
           <TextInput style={styles.input} value={mail} onChangeText={(inputText => setMail(inputText))} />
-          <Image style={styles.imagenInput} source={Mail}/>
+          <Image style={styles.imagen} source={Mail} />
+        </View>
+      </View>
+
+      <View style={styles.fieldset}>
+        <Text style={styles.legend}>Photo</Text>
+        <View style={styles.legendCont}>
+          <TextInput style={styles.input} value={photo} onChangeText={(inputText => setPhoto(inputText))} />
+          <Image style={styles.imagen} source={Camera} />
         </View>
       </View>
 
@@ -49,48 +74,48 @@ export default function LoginForm() {
         <Text style={styles.legend}>Password</Text>
         <View style={styles.legendCont}>
           <TextInput style={styles.input} secureTextEntry={true} value={password} onChangeText={(inputText => setPassword(inputText))} />
-          <Image style={styles.imagenInput} source={Lock}/>
+          <Image style={styles.imagen} source={Lock} />
         </View>
       </View>
 
-      <TouchableOpacity style={styles.button} onPress={handleSubmit}>
-        <Text style={styles.buttonText}>Sign in</Text>
+      <TouchableOpacity style={styles.buttonSignUp} onPress={handleSubmit}>
+        <Text style={styles.buttonText}>Register</Text>
       </TouchableOpacity>
 
       <View style={styles.divGoogle}>
-        <TouchableOpacity style={styles.button2} onPress={() => {}}>
+        <TouchableOpacity style={styles.button2}>
           <Image style={styles.googleImg} source={Google} />
-          <Text style={styles.buttonText2}>Sign in with Google</Text>
+          <Text style={styles.buttonText2}>Sign up with Google</Text>
         </TouchableOpacity>
       </View>
 
       <View style={styles.parrafosForm}>
-        <View style={styles.textSignUp}>
+        <View style={styles.textLogin}>
         <Text>
-        You don't have an account yet?
+          Already have an account?
         </Text>
-        <TouchableOpacity onPress={handleSign}>
-          <Text style={styles.parrafosFormText}>Sign up</Text>
+        <TouchableOpacity onPress={handleSignIn}>
+          <Text style={styles.parrafosFormText}>Log In</Text>
         </TouchableOpacity>
         </View>
         <Text>
           Go back to 
           <Text style={styles.parrafosFormText} onPress={() => {
+              navigation.navigate("Home");
             }}> Home</Text> 
         </Text>
       </View>
     </View>
   );
 }
-
 const styles = StyleSheet.create({
-  containerLogIn: {
+  ViewRegister: {
     display: "flex",
     flexDirection: "column",
     justifyContent: "flex-start",
     alignItems: "center",
-    gap: 20,
-    marginTop: 40,
+    gap: 15,
+    marginTop: 30,
     width: "100%",
     height: 480
   },
@@ -110,13 +135,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   imagen:{
-    width: 19,
-    height: 19,
+    width: 18,
+    height: 18,
     marginBottom: 10,
-  },
-  imagenInput: {
-    width: 19,
-    height: 19
   },
   googleImg: {
     width: 30,
@@ -130,7 +151,7 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     fontSize: 12,
     lineHeight: 15,
-    letterSpacing: 1,
+    letterSpacing: 4,
     fontWeight: 500,
     color: "#ff8c00",
   },
@@ -142,8 +163,7 @@ const styles = StyleSheet.create({
     padding: 11,
     borderRadius: 5,
   },
-
-  button: {
+  buttonSignUp: {
     backgroundColor: "#ff8c00",
     borderRadius: 10,
     height: 60,
@@ -193,16 +213,15 @@ const styles = StyleSheet.create({
     marginTop: 20,
     flexDirection: "column",
     justifyContent: "center",
-    alignItems: "center",
-    marginBottom: 50,
-    gap: 20
+    alignItems: "center"
   },
 
   parrafosFormText:{
     color: "#ff8c00",
     fontWeight: 700,
   },
-  textSignUp: {
+
+  textLogin:{
     display: 'flex',
     flexDirection: 'row'
   }

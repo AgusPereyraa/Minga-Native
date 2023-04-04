@@ -9,7 +9,7 @@ export default function Welcome(props) {
             <Text style={styles.textTitle}>Minga</Text>
             <Image source={Logo} style={styles.logo} />
         </View>
-        <Text style={styles.welcomeH2}>{props.text} <Text style={styles.span}>{props.text2}</Text></Text>
+        <Text style={styles.welcomeH2}> Welcome <Text style={styles.span}>Back!</Text></Text>
         <Text style={styles.welcomeText}>Discover manga, manhua and manhwa, track your progress, have fun, read manga</Text>
       </View>
     );
@@ -38,15 +38,15 @@ export default function Welcome(props) {
     welcomeH2: {
         fontSize: 24,
         fontWeight: 'bold',
-        marginTop: 20,
+        marginTop: 10,
         textAlign: 'center',
     },
     span: {
-        color: '#29abe2',
+        color: "#ff8c00",
     },
     welcomeText: {
         fontSize: 16,
-        marginTop: 20,
+        marginTop: 10,
         textAlign: 'center',
         marginHorizontal: 20,
     }
