@@ -1,18 +1,14 @@
 import React from 'react'
-import { View, Text, StyleSheet, StatusBar } from 'react-native'
+import { View, Text } from 'react-native'
+import Hero from '../components/Hero/Hero'
 
-
-export default function MangasScreen() {
-  return (
-    <View>
-        <Text style={style.content}>Logout</Text>
-    </View>
-  )
+function LogOut() {
+    const token = async
+    return (
+        <View>
+            <Hero />
+        </View>
+    )
 }
 
-const style = StyleSheet.create({
-    content:{
-      flex: 1,
-      paddingTop: StatusBar.currentHeight
-    }
-  })
+export default LogOut

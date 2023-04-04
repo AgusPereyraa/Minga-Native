@@ -12,7 +12,7 @@ function SectionMain() {
        source={heroBg}
       style={styles.background}>
       <View style={styles.viewText}>
-        <Text style={styles.title}>For the love of mangas</Text>
+        <Text style={styles.title}>For the love of mangas🧡</Text>
         <Text style={styles.subTitle}>
           Explore our varieties
         </Text>
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
     },
     background:{
         width: windowWidth,
-        height: 900,
+        height: windowHeight,
         flex: 1,
         resizeMode: 'cover',
         justifyContent: 'center',
@@ -66,14 +66,14 @@ const styles = StyleSheet.create({
     button: {
         width: 140,
         height: 55,
-        backgroundColor: 'orange',
+        backgroundColor: '#ff8c00',
         borderRadius: 6,
         justifyContent: 'center',
         alignItems: 'center'
     },
     pButton: {
         color: '#FFF',
-        fontWeight: '500',
+        fontWeight: 'bold',
         fontSize: 24,
         textDecorationLine: 'none',
     },
