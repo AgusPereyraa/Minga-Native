@@ -66,17 +66,18 @@ export default function LoginForm() {
 
       <View style={styles.parrafosForm}>
         <View style={styles.textSignUp}>
-        <Text>
-        You don't have an account yet?
+        <Text style={styles.parrafosFormText}>
+          You don't have an account yet?
         </Text>
         <TouchableOpacity onPress={handleSign}>
-          <Text style={styles.parrafosFormText}>Sign up</Text>
+          <Text style={styles.parrafosFormText2}> Sign up</Text>
         </TouchableOpacity>
         </View>
-        <Text>
+
+        <Text style={styles.parrafosFormText}>
           Go back to 
-          <Text style={styles.parrafosFormText} onPress={() => {
-            }}> Home</Text> 
+          <Text style={styles.parrafosFormText2} onPress={() => {
+          }}> Home</Text>
         </Text>
       </View>
     </View>
@@ -124,14 +125,15 @@ const styles = StyleSheet.create({
   },
   buttonText2:{
     color: "gray",
-    fontSize: 20
+    fontSize: 20,
+    fontWeight: 'bold'
   },
   legend: {
     marginLeft: 10,
-    fontSize: 12,
+    fontSize: 15,
     lineHeight: 15,
     letterSpacing: 1,
-    fontWeight: 500,
+    fontWeight: 600,
     color: "#ff8c00",
   },
   input: {
@@ -155,7 +157,8 @@ const styles = StyleSheet.create({
   
   buttonText: {
     color: "white",
-    fontSize: 20
+    fontSize: 20,
+    fontWeight: 'bold'
   },
 
   button2: {
@@ -172,7 +175,7 @@ const styles = StyleSheet.create({
   },
   
   buttonText3: {
-    color: "grey"
+    color: "grey",
   },
 
   divGoogle: {
@@ -195,14 +198,20 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     marginBottom: 50,
-    gap: 20
   },
 
   parrafosFormText:{
-    color: "#ff8c00",
-    fontWeight: 700,
+    fontWeight: '400',
+    fontSize: 18
   },
-  textSignUp: {
+
+  parrafosFormText2:{
+    color: "#ff8c00",
+    fontWeight: 'bold',
+    fontSize: 20,
+  },
+
+  textSignUp:{
     display: 'flex',
     flexDirection: 'row'
   }

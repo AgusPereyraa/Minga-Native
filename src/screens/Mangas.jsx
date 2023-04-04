@@ -1,12 +1,20 @@
 import React from 'react'
-import { View, Text } from 'react-native'
-import Register from '../components/Register/Register'
+import { View, Text, SafeAreaView, StatusBar, StyleSheet, ScrollView } from 'react-native'
+import Mangas from '../components/Mangas/Mangas'
 
-
-export default function MangasScreen() {
+function MangasScreen() {
   return (
-    <View>
-        <Register />
-    </View>
+    <SafeAreaView style={style.content}>
+      <ScrollView>
+        <Mangas />
+      </ScrollView>
+    </SafeAreaView>
   )
 }
+  const style = StyleSheet.create({
+    content: {
+      fix: 1,
+      paddingTop: StatusBar.currentHeight
+    }
+  })
+export default MangasScreen

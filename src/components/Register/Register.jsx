@@ -91,16 +91,16 @@ export default function FormRegister() {
 
       <View style={styles.parrafosForm}>
         <View style={styles.textLogin}>
-        <Text>
+        <Text style={styles.parrafosFormText}>
           Already have an account?
         </Text>
         <TouchableOpacity onPress={handleSignIn}>
-          <Text style={styles.parrafosFormText}>Log In</Text>
+          <Text style={styles.parrafosFormText2}> Log In</Text>
         </TouchableOpacity>
         </View>
-        <Text>
+        <Text style={styles.parrafosFormText}>
           Go back to 
-          <Text style={styles.parrafosFormText} onPress={() => {
+          <Text style={styles.parrafosFormText2} onPress={() => {
               navigation.navigate("Home");
             }}> Home</Text> 
         </Text>
@@ -135,8 +135,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   imagen:{
-    width: 18,
-    height: 18,
+    width: 19,
+    height: 19,
     marginBottom: 10,
   },
   googleImg: {
@@ -145,20 +145,21 @@ const styles = StyleSheet.create({
   },
   buttonText2:{
     color: "gray",
-    fontSize: 20
+    fontSize: 20,
+    fontWeight: 'bold',
   },
   legend: {
     marginLeft: 10,
-    fontSize: 12,
+    fontSize: 15,
     lineHeight: 15,
-    letterSpacing: 4,
-    fontWeight: 500,
+    letterSpacing: 1,
+    fontWeight: 600,
     color: "#ff8c00",
   },
   input: {
     width: "90%",
     backgroundColor: "transparent",
-    height: 45,
+    height: 40,
     fontSize: 15,
     padding: 11,
     borderRadius: 5,
@@ -167,7 +168,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#ff8c00",
     borderRadius: 10,
     height: 60,
-    marginBottom: 20,
+    marginBottom: 15,
     width: "90%",
     justifyContent: "center",
     alignItems: "center",
@@ -175,7 +176,8 @@ const styles = StyleSheet.create({
   
   buttonText: {
     color: "white",
-    fontSize: 20
+    fontSize: 20,
+    fontWeight: 'bold'
   },
 
   button2: {
@@ -208,17 +210,23 @@ const styles = StyleSheet.create({
 
   parrafosForm: {
     display: "flex",
-    gap: 17,
+    gap: 5,
     width: "100%",
     marginTop: 20,
     flexDirection: "column",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
 
   parrafosFormText:{
+    fontWeight: '400',
+    fontSize: 18,
+  },
+
+  parrafosFormText2:{
     color: "#ff8c00",
-    fontWeight: 700,
+    fontWeight: 'bold',
+    fontSize: 18,
   },
 
   textLogin:{
