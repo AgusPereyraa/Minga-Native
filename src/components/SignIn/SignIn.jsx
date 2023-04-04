@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet, Alert, } from 'react-native';
+import React, { useState } from 'react'
+import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet, Alert, } from 'react-native'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+import { useNavigation } from '@react-navigation/native';
 import axios from 'axios';
 import Google from "../../Images/Google.png"
 import Mail from "../../Images/Mail.png"
@@ -7,6 +9,7 @@ import Lock from "../../Images/Lock.png"
 import Register from '../Register/Register'
 
 export default function LoginForm() {
+    const navigation = useNavigation();
     const [mail, setMail] = useState('');         
     const [password, setPassword] = useState('');
     const [showRegister, setShowRegister] = useState(false)
@@ -23,10 +26,22 @@ export default function LoginForm() {
         console.log(data)
         let url = 'https://back-minga.onrender.com/api/auth/signin'
         try {
-            await axios.post(url, data)
+            const res = await axios.post(url, data)
+
+            const token = res.data.token
+            console.log(token)
+            await AsyncStorage.setItem('token', JSON.stringify(token))
+
             Alert.alert('¡Online User!', 'Welcome', [
                 { text: 'OK', onPress: () => console.log('OK Pressed') },
             ]);
+
+            setTimeout(() => {
+              navigation.navigate('Mangas');
+          }, 1000);
+          setMail('')
+          setPassword('')
+
         } catch (error) {
             Alert.alert('Ooops, something went wrong!', 'Wrong Credentials', [
                 { text: 'OK', onPress: () => console.log('OK Pressed') },
@@ -73,12 +88,6 @@ export default function LoginForm() {
           <Text style={styles.parrafosFormText2}> Sign up</Text>
         </TouchableOpacity>
         </View>
-
-        <Text style={styles.parrafosFormText}>
-          Go back to 
-          <Text style={styles.parrafosFormText2} onPress={() => {
-          }}> Home</Text>
-        </Text>
       </View>
     </View>
   );
@@ -93,7 +102,7 @@ const styles = StyleSheet.create({
     gap: 20,
     marginTop: 40,
     width: "100%",
-    height: 480
+    height: 380
   },
   fieldset: {
     display: "flex",

@@ -18,7 +18,7 @@ import captureState from './Capture/reducer';
 export const store = configureStore({
         reducer: {
         text: textReducer,
-        mangas: mangasReducer, //G
+        mangas: mangasReducer,
         checks: checkReducer,
         alert: alertReducer,
         manga: mangaReducer,
@@ -26,7 +26,7 @@ export const store = configureStore({
         edit: editReducer,
         myMangas: getMyMangas,
         modalDeleteState: modalDeleteReducer,
-        author: authorReducer, //G
+        author: authorReducer,
         autor: authorReducer2,
         donations: donationReducer,
         Author: authorReducerG,

@@ -1,26 +1,25 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { View, Text, Image, StyleSheet } from 'react-native';
+import { View, Text, Image, StyleSheet, Touchable, TouchableOpacity } from 'react-native';
 
 export default function MangaCard(props) {
-    //console.log(props) LOG DE LAS CARDS DE MANGAS
     const navigation = useNavigation();
 
-    const handleNavigate = () => {
+    const handleRead = () => {
         navigation.navigate('MangaDetail', { manga: props });
     };
 
     return (
-        <View style={styles.cardContainer} onPress={handleNavigate}>
+        <View style={styles.cardContainer}>
             <View style={[styles.spanCard, { backgroundColor: props.category_.name.includes('shonen') ? 'red' : props.category_.name.includes('comic') ? 'orange' : props.category_.name.includes('shojo') ? 'green' : props.category_.name.includes('seinen') ? 'purple' : '' }]}></View>
             <View style={styles.infoContainer}>
                 <Text style={styles.title}>{props.title_}</Text>
                 <Text style={styles.category}>{props.category_.name}</Text>
-                <View style={styles.btnCont}>
-                    <Text style={styles.btnTexto}>
-                        Detail
-                    </Text>
+                <TouchableOpacity style={styles.btnCont} onPress={handleRead}>
+                <View>
+                    <Text style={styles.btnTexto}>Detail</Text>
                 </View>
+                </TouchableOpacity>
             </View>
             <Image style={styles.img} source={{ uri: props.photo }} />
         </View>

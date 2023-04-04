@@ -3,7 +3,6 @@ import { Image, Text, View, StyleSheet, ImageBackground, TouchableOpacity, TextI
 import Card from '../MangasCard/MangasCard';
 import PrevNext from '../ButtonsPN.jsx/ButtonsPN';
 import { useSelector,useDispatch } from 'react-redux'
-// import Navbar from '../Nav/Navbar';
 import MangasFondo from '../../Images/MangasFondo.png'
 import Search from '../MangasSearch/MangasSearch'
 import MangasActions from '../../store/Mangas/actions'
@@ -39,7 +38,6 @@ export default function MangasAll() {
     return (
         <View  style={styles.container}>
             <ImageBackground source={MangasFondo} resizeMode="cover" style={styles.image1}>
-            {/* <Navbar/> */}
                 <View style={styles.containerTexto}>
                     <Text style={styles.title}>Mangas</Text>
                     <Text style={styles.book}>📖</Text>
